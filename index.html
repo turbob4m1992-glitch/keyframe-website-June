@@ -266,9 +266,27 @@ header.nav.scrolled {
 }
 
 .hero-eyebrow { margin-bottom: 34px; position: relative; z-index: 2; }
+.hero-title-container {
+  perspective: 1200px; display: flex; align-items: flex-start; justify-content: flex-start;
+}
+@media (max-width: 900px) {
+  .hero-title-container { justify-content: flex-start; }
+}
+.hero-title-inner {
+  transform-style: preserve-3d; will-change: transform;
+  transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+}
 .hero-title {
   position: relative; z-index: 2; font-family: "Fraunces", serif; font-weight: 360; letter-spacing: -0.03em; line-height: 0.96;
-  font-size: clamp(2.9rem, 9vw, 8.4rem);
+  font-size: clamp(2.9rem, 9vw, 8.4rem); margin: 0;
+}
+.highlight-pivotal {
+  display: inline-block; border-radius: 6px; padding: 0 10px; color: #0A0A0A;
+  background: var(--accent); will-change: transform, box-shadow;
+  transform: translate(calc(-8px * var(--lift, 0)), calc(-6px * var(--lift, 0)));
+  box-shadow: rgba(235, 181, 78, calc(0.8 * var(--lift, 0))) 2px 1.5px 0px 0.75px, 
+              rgba(235, 181, 78, calc(0.3 * var(--lift, 0))) 8px 4px 4px 0px;
+  font-style: italic; font-weight: 500;
 }
 .hero-title .it {
   background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text;
@@ -656,10 +674,14 @@ html.no-gsap .reveal { opacity: 1 !important; transform: none !important; }
     <div class="hero-ambient"></div>
     <div class="wrap">
       <div class="hero-eyebrow reveal"><span class="eyebrow">00:00:01 / Strategy in Motion</span></div>
-      <h1 class="hero-title">
-        <span class="reveal d1">We design the</span><br />
-        <span class="reveal d2"><span class="it">pivotal</span> <span class="blk">moments.</span></span>
-      </h1>
+      <div class="hero-title-container" id="heroPerspective">
+        <div class="hero-title-inner" id="heroCard">
+          <h1 class="hero-title">
+            <span class="reveal d1">We design the</span><br />
+            <span class="reveal d2"><span class="highlight-pivotal">pivotal</span> <span class="blk">moments.</span></span>
+          </h1>
+        </div>
+      </div>
       <div class="hero-lower reveal d3 glassmorphic">
         <p class="hero-sub">
           Keyframe Global is a creative studio crafting cinematic websites, brand films, and identities for ambitious companies across Jordan, the GCC, and the United States.
@@ -1207,6 +1229,43 @@ html.no-gsap .reveal { opacity: 1 !important; transform: none !important; }
     document.querySelectorAll(".step").forEach(function(el) { stepObserver.observe(el); });
   } else {
     document.querySelectorAll(".reveal").forEach(function(el) { el.style.opacity = 1; el.style.transform = "none"; });
+  }
+
+  /* ---------- HERO PERSPECTIVE ---------- */
+  var heroPerspective = document.getElementById("heroPerspective");
+  var heroCard = document.getElementById("heroCard");
+  if (heroPerspective && heroCard && !reduced) {
+    var maxRotateX = 14, maxRotateY = 30, smoothing = 0.12;
+    var targetX = 0, targetY = 0, rotX = 0, rotY = 0, raf = 0;
+    
+    var onMove = function(e) {
+      var r = heroCard.getBoundingClientRect();
+      var dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+      var dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+      var dist = Math.hypot(dx, dy);
+      var falloff = dist <= 1 ? 1 : Math.max(0, 1 - (dist - 1) / 2);
+      
+      targetX = Math.max(-1, Math.min(1, dy)) * maxRotateX * falloff;
+      targetY = -Math.max(-1, Math.min(1, dx)) * maxRotateY * falloff;
+    };
+    
+    var onLeave = function() { targetX = 0; targetY = 0; };
+    
+    var tick = function() {
+      rotX += (targetX - rotX) * smoothing;
+      rotY += (targetY - rotY) * smoothing;
+      var lift = Math.min(1, Math.hypot(rotX / maxRotateX, rotY / maxRotateY));
+      
+      heroPerspective.style.setProperty("--rx", rotX.toFixed(2) + "deg");
+      heroPerspective.style.setProperty("--ry", rotY.toFixed(2) + "deg");
+      heroPerspective.style.setProperty("--lift", lift.toFixed(3));
+      
+      raf = requestAnimationFrame(tick);
+    };
+    
+    window.addEventListener("mousemove", onMove);
+    document.addEventListener("mouseleave", onLeave);
+    tick();
   }
 })();
 </script>
