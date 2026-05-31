@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en" class="js" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Keyframe Global | Strategy in Motion</title>
+<meta name="description" content="Keyframe Global is a high-end creative studio crafting cinematic websites, brand films, and identities for ambitious companies across Jordan, the GCC, and the United States." />
+<meta name="keywords" content="creative agency, cinematic web design, video production, brand identity, digital branding, Amman, Dubai, Riyadh, Doha, Jordan, GCC, USA" />
+<meta name="author" content="Yousef Balawi, Keyframe Global" />
+<link rel="canonical" href="https://www.keyframeglobal.com/" />
+<link rel="icon" type="image/png" href="keyframe-favicon.png" />
+<link rel="apple-touch-icon" href="keyframe-favicon.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Keyframe Global | Strategy in Motion" />
+<meta property="og:description" content="High-end cinematic web design, brand film, and digital branding for ambitious companies across Jordan, the GCC, and the United States." />
+<meta property="og:url" content="https://www.keyframeglobal.com/" />
+<meta property="og:image" content="https://www.keyframeglobal.com/keyframe-og-image.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Keyframe Global | Strategy in Motion" />
+<meta name="twitter:description" content="High-end cinematic web design, brand film, and digital branding across Jordan, the GCC, and the United States." />
+<meta name="twitter:image" content="https://www.keyframeglobal.com/keyframe-og-image.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" as="style" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Bricolage+Grotesque:opsz,wght@10..48,300..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Keyframe Global",
+  "url": "https://www.keyframeglobal.com/",
+  "logo": "https://www.keyframeglobal.com/keyframe-og-image.png",
+  "slogan": "Strategy in Motion",
+  "description": "High-end cinematic website design, brand film and video production, and digital branding studio serving Jordan, the GCC, and the United States.",
+  "founder": { "@type": "Person", "name": "Yousef Balawi", "jobTitle": "Founder and Creative Director" },
+  "areaServed": ["Jordan", "United Arab Emirates", "Saudi Arabia", "Qatar", "United States"],
+  "knowsAbout": ["Web Design", "Video Production", "Brand Identity", "3D Visualization", "Motion Design"],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Experiences" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cinematic Video" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand and Identity" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI and Visualization" } }
+  ]
+}
+</script>
+
+<style>
+/* ===================================================================
+   KEYFRAME GLOBAL  ::  STRATEGY IN MOTION
+   Cinematic luxury, film-timeline motif, dual theme.
+   =================================================================== */
+
+:root,
+[data-theme="dark"] {
+  --bg: #08080A;
+  --bg-2: #0E0E12;
+  --surface: #121217;
+  --surface-2: #17171E;
+  --fg: #F5F2EC;
+  --fg-muted: rgba(245, 242, 236, 0.58);
+  --fg-faint: rgba(245, 242, 236, 0.30);
+  --line: rgba(245, 242, 236, 0.10);
+  --line-strong: rgba(245, 242, 236, 0.20);
+  --accent: #EBB54E;
+  --accent-2: #7CC4C0;
+  --destructive: #E0654E;
+  --glow-1: rgba(235, 181, 78, 0.16);
+  --glow-2: rgba(124, 196, 192, 0.14);
+  --grain-opacity: 0.05;
+
+  /* tokens consumed by the cinematic footer styling */
+  --foreground: var(--fg);
+  --background: var(--bg);
+  --primary: var(--accent);
+  --secondary: var(--accent-2);
+  --muted-foreground: var(--fg-muted);
+  --border: var(--line);
+}
+
+[data-theme="light"] {
+  --bg: #F4F1EA;
+  --bg-2: #ECE8DF;
+  --surface: #FFFFFF;
+  --surface-2: #FBFAF6;
+  --fg: #14130F;
+  --fg-muted: rgba(20, 19, 15, 0.60);
+  --fg-faint: rgba(20, 19, 15, 0.32);
+  --line: rgba(20, 19, 15, 0.12);
+  --line-strong: rgba(20, 19, 15, 0.24);
+  --accent: #B8862B;
+  --accent-2: #2E8F8A;
+  --destructive: #C0492E;
+  --glow-1: rgba(184, 134, 43, 0.14);
+  --glow-2: rgba(46, 143, 138, 0.12);
+  --grain-opacity: 0.035;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+html.lenis-stop { scroll-behavior: auto; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: none;
+}
+
+@media (hover: none), (max-width: 900px) { body { cursor: auto; } }
+
+::selection { background: var(--accent); color: var(--bg); }
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+.mono { font-family: "IBM Plex Mono", monospace; }
+.serif { font-family: "Fraunces", serif; }
+
+/* ---------- Fixed atmosphere layers ---------- */
+#field {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.9;
+}
+.atmos-grid {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-size: 64px 64px;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 40%, black 30%, transparent 80%);
+  opacity: 0.5;
+}
+.atmos-grain {
+  position: fixed; inset: -50%; z-index: 60; pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 0.6s steps(2) infinite;
+}
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-4%, 3%); }
+}
+
+.shell { position: relative; z-index: 2; }
+
+/* ---------- Custom cursor ---------- */
+.cursor-dot, .cursor-ring {
+  position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none;
+  border-radius: 50%; transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+}
+.cursor-dot { width: 7px; height: 7px; background: #fff; }
+.cursor-ring {
+  width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.6);
+  transition: width 0.3s, height 0.3s, border-color 0.3s, background 0.3s;
+}
+.cursor-ring.is-hover { width: 60px; height: 60px; background: rgba(255,255,255,0.08); }
+@media (hover: none), (max-width: 900px) { .cursor-dot, .cursor-ring { display: none; } }
+
+/* ---------- Shared layout ---------- */
+.wrap { width: 100%; max-width: 1340px; margin: 0 auto; padding: 0 32px; }
+@media (max-width: 700px) { .wrap { padding: 0 20px; } }
+
+.eyebrow {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--accent); display: inline-flex; align-items: center; gap: 0.75rem;
+}
+.eyebrow::before {
+  content: ""; width: 28px; height: 1px; background: var(--accent); display: inline-block;
+}
+
+.section-tag {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--fg-faint);
+}
+
+/* ---------- Navigation ---------- */
+header.nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 32px; transition: padding 0.4s, background 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+header.nav.scrolled {
+  padding: 12px 32px; background: color-mix(in oklch, var(--bg) 72%, transparent);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+@media (max-width: 700px) { header.nav, header.nav.scrolled { padding-left: 20px; padding-right: 20px; } }
+
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand .mark {
+  font-family: "Fraunces", serif; font-weight: 600; font-size: 1.35rem; letter-spacing: -0.02em;
+}
+.brand .mark span { color: var(--accent); }
+.brand .tc {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; letter-spacing: 0.14em;
+  color: var(--fg-faint); border-left: 1px solid var(--line); padding-left: 12px;
+}
+@media (max-width: 560px) { .brand .tc { display: none; } }
+
+.nav-links { display: flex; align-items: center; gap: 34px; }
+.nav-links a {
+  font-size: 0.84rem; font-weight: 500; letter-spacing: 0.01em; color: var(--fg-muted);
+  position: relative; transition: color 0.3s;
+}
+.nav-links a::after {
+  content: ""; position: absolute; left: 0; bottom: -6px; width: 0; height: 1px;
+  background: var(--accent); transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover { color: var(--fg); }
+.nav-links a:hover::after { width: 100%; }
+@media (max-width: 980px) { .nav-links { display: none; } }
+
+.nav-right { display: flex; align-items: center; gap: 16px; }
+
+.theme-toggle {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line);
+  display: grid; place-items: center; transition: border-color 0.3s, transform 0.3s, background 0.3s;
+  color: var(--fg);
+}
+.theme-toggle:hover { border-color: var(--accent); transform: rotate(18deg); }
+.theme-toggle svg { width: 18px; height: 18px; }
+.theme-toggle .ico-sun { display: none; }
+[data-theme="light"] .theme-toggle .ico-sun { display: block; }
+[data-theme="light"] .theme-toggle .ico-moon { display: none; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.82rem; font-weight: 600; letter-spacing: 0.01em;
+  padding: 13px 24px; border-radius: 100px; transition: transform 0.3s, background 0.3s, color 0.3s, border-color 0.3s;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: #0A0A0A; }
+.btn-primary:hover { background: var(--fg); }
+.btn-ghost { border: 1px solid var(--line-strong); color: var(--fg); }
+.btn-ghost:hover { border-color: var(--accent); background: color-mix(in oklch, var(--accent) 8%, transparent); }
+.btn .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; min-height: 100svh; display: flex; flex-direction: column;
+  justify-content: center; padding: 140px 0 60px;
+}
+.hero-ambient {
+  position: absolute; top: 50%; left: 50%; width: 80vw; height: 80vw; max-width: 800px; max-height: 800px;
+  transform: translate(-50%, -50%); background: radial-gradient(circle, var(--accent) 0%, var(--accent-2) 40%, transparent 70%);
+  opacity: 0.15; filter: blur(80px); animation: orb-float 12s ease-in-out infinite alternate;
+  pointer-events: none; z-index: 0;
+}
+@keyframes orb-float {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.15; }
+  100% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.25; }
+}
+
+.hero-eyebrow { margin-bottom: 34px; position: relative; z-index: 2; }
+.hero-title {
+  position: relative; z-index: 2; font-family: "Fraunces", serif; font-weight: 360; letter-spacing: -0.03em; line-height: 0.96;
+  font-size: clamp(2.9rem, 9vw, 8.4rem);
+}
+.hero-title .it {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text;
+  color: transparent; font-style: italic; font-weight: 500;
+}
+.hero-title .blk { font-weight: 600; }
+
+.glassmorphic {
+  position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+  gap: 40px; margin-top: 48px; background: color-mix(in oklch, var(--surface) 40%, transparent);
+  backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--line);
+  border-radius: 24px; padding: 32px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+[data-theme="light"] .glassmorphic { box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.5); }
+@media (max-width: 600px) { .glassmorphic { padding: 24px; } }
+
+.hero-sub { max-width: 460px; color: var(--fg-muted); font-size: 1.06rem; line-height: 1.6; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero-marquee {
+  margin-top: 70px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  overflow: hidden; padding: 16px 0; background: color-mix(in oklch, var(--surface) 30%, transparent);
+  backdrop-filter: blur(8px); position: relative; z-index: 2;
+}
+.marquee-row { display: flex; width: max-content; animation: scrollx 36s linear infinite; }
+.marquee-row.angled { transform: rotate(-1.5deg) scale(1.05); }
+.marquee-row.rev { animation-direction: reverse; }
+.marquee-row span {
+  font-family: "Fraunces", serif; font-style: italic; font-size: 1.4rem;
+  padding: 0 30px; display: inline-flex; align-items: center; gap: 30px; white-space: nowrap;
+  color: var(--fg-muted);
+}
+.marquee-row span b { color: var(--accent); font-style: normal; font-size: 0.7rem; }
+@keyframes scrollx { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.scroll-cue {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  font-family: "IBM Plex Mono", monospace; font-size: 0.6rem; letter-spacing: 0.3em;
+  color: var(--fg-faint); text-transform: uppercase;
+}
+.scroll-cue .line { width: 1px; height: 44px; background: linear-gradient(var(--accent), transparent); position: relative; overflow: hidden; }
+.scroll-cue .line::after { content: ""; position: absolute; top: -50%; left: 0; width: 100%; height: 50%; background: var(--accent); animation: drop 2s ease-in infinite; }
+@keyframes drop { 0% { top: -50%; } 100% { top: 100%; } }
+@media (max-width: 700px) { .scroll-cue { display: none; } }
+
+/* ---------- Clock + trust strip ---------- */
+.strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.clocks {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 28px; padding: 22px 0;
+}
+.clock { display: flex; flex-direction: column; gap: 3px; }
+.clock .city { font-family: "IBM Plex Mono", monospace; font-size: 0.6rem; letter-spacing: 0.22em; color: var(--fg-faint); text-transform: uppercase; }
+.clock .time { font-family: "IBM Plex Mono", monospace; font-size: 0.92rem; color: var(--fg); letter-spacing: 0.06em; }
+
+.proof {
+  display: grid; grid-template-columns: 1.3fr 1fr 1fr 1fr; gap: 1px;
+  background: var(--line); border-bottom: 1px solid var(--line);
+}
+.proof > div { background: var(--bg); padding: 40px 28px; }
+.proof .badge .k { font-family: "Fraunces", serif; font-size: 1.5rem; }
+.proof .stat .num { font-family: "Fraunces", serif; font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 500; letter-spacing: -0.02em; line-height: 1; }
+.proof .stat .num .accent { color: var(--accent); }
+.proof .lbl { margin-top: 12px; font-size: 0.82rem; color: var(--fg-muted); line-height: 1.45; }
+.proof .badge .lbl { color: var(--accent); font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; }
+@media (max-width: 860px) { .proof { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .proof { grid-template-columns: 1fr; } }
+
+/* ---------- Section heading ---------- */
+.sec { padding: 130px 0; position: relative; }
+.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 64px; flex-wrap: wrap; }
+.sec-head h2 {
+  font-family: "Fraunces", serif; font-weight: 380; letter-spacing: -0.025em; line-height: 1.0;
+  font-size: clamp(2.1rem, 5.4vw, 4.4rem); max-width: 16ch;
+}
+.sec-head h2 .it { font-style: italic; color: var(--accent); }
+.sec-head .aside { max-width: 320px; color: var(--fg-muted); font-size: 0.98rem; line-height: 1.6; }
+
+/* ---------- Services glow cards ---------- */
+.services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+@media (max-width: 820px) { .services { grid-template-columns: 1fr; } }
+
+.glow-card {
+  position: relative; border-radius: 22px; padding: 44px 40px; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line);
+  min-height: 320px; display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s;
+}
+.glow-card::before {
+  content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--glow-1), transparent 60%);
+}
+.glow-card::after {
+  content: ""; position: absolute; inset: 0; border-radius: 22px; padding: 1px; pointer-events: none;
+  background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 50%), var(--accent), transparent 65%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s;
+}
+.glow-card:hover { transform: translateY(-6px); }
+.glow-card:hover::before, .glow-card:hover::after { opacity: 1; }
+
+.glow-card .idx { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--fg-faint); }
+.glow-card h3 { font-family: "Fraunces", serif; font-weight: 440; font-size: 2rem; letter-spacing: -0.02em; margin: 18px 0 14px; }
+.glow-card p { color: var(--fg-muted); font-size: 0.98rem; line-height: 1.6; max-width: 42ch; }
+.glow-card .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px; }
+.glow-card .tags span {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.62rem; letter-spacing: 0.14em;
+  padding: 6px 12px; border: 1px solid var(--line); border-radius: 100px; color: var(--fg-muted);
+}
+.glow-card .arrow { position: absolute; top: 40px; right: 40px; color: var(--fg-faint); transition: color 0.4s, transform 0.4s; }
+.glow-card:hover .arrow { color: var(--accent); transform: translate(4px, -4px); }
+
+/* ---------- Work (horizontal scroll) ---------- */
+#work { padding-bottom: 0; }
+
+/* Fallback for unsupported browsers: Native Horizontal Scroll */
+.work-track-pin {
+  overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Hide scrollbar for cleaner look */
+}
+.work-track-pin::-webkit-scrollbar { display: none; }
+.work-track { display: flex; gap: 28px; padding: 10px 32px 90px; width: max-content; }
+.work-card {
+  position: relative; flex: 0 0 auto; width: 70vw; max-width: 620px; border-radius: 22px; overflow: hidden;
+  border: 1px solid var(--line); scroll-snap-align: center;
+}
+@media (max-width: 600px) { .work-card { width: 85vw; } }
+.work-visual { height: 62vh; max-height: 540px; position: relative; overflow: hidden; }
+.work-visual .mesh { position: absolute; inset: -20%; filter: saturate(1.1); }
+.work-visual .noise { position: absolute; inset: 0; opacity: 0.4; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.work-visual .ttl {
+  position: absolute; left: 28px; bottom: 24px; right: 28px;
+  font-family: "Fraunces", serif; font-style: italic; font-weight: 420; letter-spacing: -0.02em;
+  font-size: clamp(1.8rem, 4vw, 3rem); color: #fff; mix-blend-mode: difference;
+}
+.work-visual .yr {
+  position: absolute; top: 22px; right: 26px; font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem; letter-spacing: 0.18em; color: #fff; mix-blend-mode: difference;
+}
+.work-meta { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; background: var(--surface); }
+.work-meta .cat { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; letter-spacing: 0.16em; color: var(--accent); text-transform: uppercase; }
+.work-meta .desc { color: var(--fg-muted); font-size: 0.9rem; max-width: 38ch; }
+.work-meta .reg { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; color: var(--fg-faint); letter-spacing: 0.1em; }
+
+@supports (animation-timeline: view()) {
+  @media (min-width: 900px) {
+    .work-track-pin {
+      height: 300vh; overflow: visible;
+      view-timeline-name: --work-pin;
+    }
+    .work-track {
+      position: sticky; top: 100px;
+      animation: work-scroll linear forwards;
+      animation-timeline: --work-pin;
+      animation-range: entry 100% exit -50%;
+      will-change: transform;
+    }
+    @keyframes work-scroll {
+      to { transform: translateX(calc(-100% + 100vw - 64px)); }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .work-track { flex-direction: column; padding: 10px 20px 90px; width: 100%; }
+  .work-card { width: 100%; }
+  .work-visual { height: 56vh; }
+}
+
+/* ---------- Method timeline ---------- */
+.method-track { position: relative; view-timeline-name: --method-track; view-timeline-axis: block; }
+.method-line { position: absolute; left: 0; top: 38px; width: 100%; height: 1px; background: var(--line); }
+.method-line .fill { position: absolute; left: 0; top: 0; height: 100%; width: 0; background: var(--accent); }
+
+@supports (animation-timeline: view()) {
+  .method-line .fill {
+    animation: method-fill linear both;
+    animation-timeline: --method-track;
+    animation-range: entry 30% cover 40%;
+  }
+  @keyframes method-fill { to { width: 100%; } }
+}
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step { position: relative; padding-top: 70px; }
+.step .node {
+  position: absolute; top: 31px; left: 0; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--line-strong); transition: border-color 0.4s, background 0.4s, box-shadow 0.4s;
+}
+.step.on .node { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 6px color-mix(in oklch, var(--accent) 18%, transparent); }
+.step .no { font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--accent); }
+.step h4 { font-family: "Fraunces", serif; font-weight: 440; font-size: 1.7rem; margin: 12px 0 10px; letter-spacing: -0.02em; }
+.step p { color: var(--fg-muted); font-size: 0.92rem; line-height: 1.55; }
+@media (max-width: 820px) {
+  .steps { grid-template-columns: 1fr 1fr; gap: 40px 24px; }
+  .method-line { display: none; }
+  .step { padding-top: 0; padding-left: 28px; }
+  .step .node { top: 4px; left: 0; }
+}
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* ---------- Testimonials 3D ---------- */
+#voices { overflow: hidden; padding-bottom: 0; }
+.voices-container {
+  position: relative; width: 100%; margin-top: 20px;
+  overflow: hidden; /* Clips the 3D scene securely */
+}
+.voices-stage {
+  height: 600px; display: flex; align-items: center; justify-content: center;
+  perspective: 1400px;
+}
+.voices-inner {
+  display: flex; gap: 18px;
+  transform: rotateX(14deg) rotateY(-16deg) rotateZ(8deg) translateZ(-60px);
+}
+.vcol { display: flex; flex-direction: column; gap: 18px; }
+.vcol .vrun { display: flex; flex-direction: column; gap: 18px; animation: vup 34s linear infinite; }
+.vcol.down .vrun { animation-name: vdown; }
+.voices-container:hover .vrun { animation-play-state: paused; }
+@keyframes vup { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+@keyframes vdown { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+
+.vcard {
+  width: 300px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px;
+  box-shadow: 0 18px 40px -22px rgba(0,0,0,0.6);
+}
+.vcard .top { display: flex; align-items: center; gap: 12px; }
+.vcard .av { width: 42px; height: 42px; border-radius: 50%; flex: 0 0 auto; display: grid; place-items: center; font-family: "Fraunces", serif; font-weight: 600; color: #0A0A0A; font-size: 1rem; }
+.vcard .nm { font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 7px; }
+.vcard .rl { font-size: 0.74rem; color: var(--fg-muted); font-family: "IBM Plex Mono", monospace; letter-spacing: 0.04em; }
+.vcard .q { margin-top: 15px; font-size: 0.92rem; line-height: 1.55; color: var(--fg-muted); }
+.vcard .q::before { content: "\201C"; color: var(--accent); font-family: "Fraunces", serif; }
+.voices-fade { position: absolute; left: 0; right: 0; height: 130px; pointer-events: none; z-index: 3; }
+.voices-fade.t { top: 0; background: linear-gradient(var(--bg), transparent); }
+.voices-fade.b { bottom: 0; background: linear-gradient(transparent, var(--bg)); }
+@media (max-width: 760px) { .voices-stage { height: 520px; } .voices-inner { transform: rotateX(10deg) rotateY(-10deg) rotateZ(4deg) scale(0.9); } }
+@media (max-width: 500px) { .voices-stage { height: 440px; } .voices-inner { transform: rotateX(8deg) rotateY(-8deg) rotateZ(3deg) scale(0.65); } }
+
+/* ---------- Big CTA ---------- */
+.cta { position: relative; text-align: center; padding: 150px 0; }
+.cta h2 { font-family: "Fraunces", serif; font-weight: 360; letter-spacing: -0.03em; line-height: 0.98; font-size: clamp(2.6rem, 8vw, 6.5rem); }
+.cta h2 .it { font-style: italic; color: var(--accent); }
+.cta .sub { margin: 26px auto 40px; max-width: 460px; color: var(--fg-muted); font-size: 1.05rem; line-height: 1.6; }
+.cta .row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; align-items: center; }
+.cta .mail { font-family: "IBM Plex Mono", monospace; font-size: 0.86rem; color: var(--fg-muted); letter-spacing: 0.04em; border-bottom: 1px solid var(--line); padding-bottom: 3px; transition: color 0.3s, border-color 0.3s; }
+.cta .mail:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ---------- Cinematic curtain footer ---------- */
+.curtain { position: relative; height: 100vh; width: 100%; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); view-timeline-name: --cine-curtain; }
+footer.cine {
+  position: fixed; bottom: 0; left: 0; width: 100%; height: 100vh; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: space-between;
+  background: var(--bg); color: var(--fg);
+}
+.cine-aurora {
+  position: absolute; left: 50%; top: 52%; width: 80vw; height: 60vh; transform: translate(-50%, -50%);
+  border-radius: 50%; filter: blur(90px); z-index: 0; pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, var(--glow-1) 0%, var(--glow-2) 45%, transparent 70%);
+  animation: breathe 9s ease-in-out infinite alternate;
+}
+@keyframes breathe { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; } 100% { transform: translate(-50%, -50%) scale(1.12); opacity: 1; } }
+.cine-grid {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none; background-size: 60px 60px;
+  background-image: linear-gradient(to right, var(--line) 1px, transparent 1px), linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+}
+.cine-giant {
+  position: absolute; left: 50%; bottom: -4vh; transform: translateX(-50%);
+  font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 25vw; line-height: 0.75;
+  letter-spacing: -0.05em; white-space: nowrap; z-index: 0; pointer-events: none; user-select: none;
+  color: transparent; -webkit-text-stroke: 1px color-mix(in oklch, var(--fg) 8%, transparent);
+  background: linear-gradient(180deg, color-mix(in oklch, var(--fg) 12%, transparent), transparent 62%);
+  -webkit-background-clip: text; background-clip: text;
+}
+@supports (animation-timeline: view()) {
+  .cine-giant {
+    animation: giant-parallax linear both;
+    animation-timeline: --cine-curtain;
+    animation-range: entry 0% cover 100%;
+  }
+  @keyframes giant-parallax {
+    from { transform: translateX(-50%) translateY(12vh) scale(0.85); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0vh) scale(1); opacity: 1; }
+  }
+}
+.cine-marquee {
+  position: absolute; top: 96px; left: 0; width: 100%; z-index: 10; overflow: hidden;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  background: color-mix(in oklch, var(--bg) 60%, transparent); backdrop-filter: blur(8px);
+  padding: 14px 0; transform: rotate(-2deg) scale(1.08);
+}
+.cine-marquee .run { display: flex; width: max-content; animation: scrollx 40s linear infinite; }
+.cine-marquee .run span {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--fg-muted); padding: 0 26px; display: inline-flex; gap: 26px; align-items: center; white-space: nowrap;
+}
+.cine-marquee .run span i { color: var(--accent); font-style: normal; }
+
+.cine-center { position: relative; z-index: 10; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 24px; margin-top: 60px; }
+.cine-center h2 {
+  font-family: "Fraunces", serif; font-weight: 400; letter-spacing: -0.03em; text-align: center;
+  font-size: clamp(2.6rem, 8vw, 6rem); margin-bottom: 44px;
+  background: linear-gradient(180deg, var(--fg), color-mix(in oklch, var(--fg) 42%, transparent));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.cine-center h2 .it { font-style: italic; }
+.pills { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.pill-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 10px; border-radius: 100px; font-weight: 600;
+  padding: 15px 30px; font-size: 0.9rem;
+  background: linear-gradient(145deg, color-mix(in oklch, var(--fg) 4%, transparent), color-mix(in oklch, var(--fg) 1%, transparent));
+  border: 1px solid var(--line); backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px -10px color-mix(in oklch, var(--bg) 50%, transparent), inset 0 1px 1px color-mix(in oklch, var(--fg) 10%, transparent);
+  transition: border-color 0.4s, background 0.4s, color 0.4s; color: var(--fg);
+}
+.pill:hover { border-color: var(--accent); background: color-mix(in oklch, var(--accent) 8%, transparent); }
+.pill.sm { padding: 11px 22px; font-size: 0.78rem; font-weight: 500; color: var(--fg-muted); }
+.pill.sm:hover { color: var(--fg); }
+
+.cine-bottom {
+  position: relative; z-index: 20; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 18px; padding: 0 32px 36px;
+}
+.cine-bottom .cr { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-muted); }
+.cine-badge {
+  display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 100px;
+  border: 1px solid var(--line); font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-muted);
+}
+.cine-badge .hb { color: var(--destructive); animation: hb 2s cubic-bezier(0.25,1,0.5,1) infinite; font-size: 0.9rem; }
+.cine-badge b { color: var(--fg); }
+@keyframes hb { 0%,100% { transform: scale(1); } 15%,45% { transform: scale(1.22); } 30% { transform: scale(1); } }
+.totop { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; transition: border-color 0.3s, color 0.3s; color: var(--fg-muted); }
+.totop:hover { border-color: var(--accent); color: var(--accent); }
+.totop svg { transition: transform 0.3s; }
+.totop:hover svg { transform: translateY(-3px); }
+@media (max-width: 600px) { .cine-bottom { padding: 0 20px 26px; } .cine-marquee { top: 80px; } }
+
+/* ---------- Reveal defaults ---------- */
+html.js .reveal { opacity: 0; }
+html.no-gsap .reveal { opacity: 1 !important; transform: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  html.js .reveal { opacity: 1; }
+  .marquee-row, .cine-marquee .run, .vcol .vrun { animation: none !important; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="field"></canvas>
+<div class="atmos-grid" aria-hidden="true"></div>
+<div class="atmos-grain" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Keyframe Global home">
+    <img src="logo.svg" alt="Keyframe Global" class="mark" style="height: 28px; width: auto;" />
+    <span class="tc" id="navtc">00:00:00:01</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#method">Method</a>
+    <a href="#voices">Studio</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-right">
+    <button class="theme-toggle magnetic" id="themeBtn" aria-label="Toggle light and dark theme">
+      <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" stroke-linecap="round"/></svg>
+    </button>
+    <a href="#contact" class="btn btn-primary magnetic"><span class="dot"></span>Start a project</a>
+  </div>
+</header>
+
+<div class="shell" id="top">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-ambient"></div>
+    <div class="wrap">
+      <div class="hero-eyebrow reveal"><span class="eyebrow">00:00:01 / Strategy in Motion</span></div>
+      <h1 class="hero-title">
+        <span class="reveal d1">We design the</span><br />
+        <span class="reveal d2"><span class="it">pivotal</span> <span class="blk">moments.</span></span>
+      </h1>
+      <div class="hero-lower reveal d3 glassmorphic">
+        <p class="hero-sub">
+          Keyframe Global is a creative studio crafting cinematic websites, brand films, and identities for ambitious companies across Jordan, the GCC, and the United States.
+        </p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary magnetic"><span class="dot"></span>Start a project</a>
+          <a href="#work" class="btn btn-ghost magnetic">View selected work</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-marquee reveal d4">
+      <div class="marquee-row angled">
+        <span>Web Experiences <b>&#10022;</b></span><span>Cinematic Video <b>&#10022;</b></span><span>Brand Identity <b>&#10022;</b></span><span>3D and AI Visualization <b>&#10022;</b></span><span>Motion Design <b>&#10022;</b></span>
+        <span>Web Experiences <b>&#10022;</b></span><span>Cinematic Video <b>&#10022;</b></span><span>Brand Identity <b>&#10022;</b></span><span>3D and AI Visualization <b>&#10022;</b></span><span>Motion Design <b>&#10022;</b></span>
+      </div>
+    </div>
+
+    <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+  </section>
+
+  <!-- CLOCK STRIP -->
+  <div class="strip">
+    <div class="wrap">
+      <div class="clocks" id="clocks">
+        <div class="clock"><span class="city">Amman</span><span class="time" data-tz="Asia/Amman">00:00:00</span></div>
+        <div class="clock"><span class="city">Dubai</span><span class="time" data-tz="Asia/Dubai">00:00:00</span></div>
+        <div class="clock"><span class="city">Riyadh</span><span class="time" data-tz="Asia/Riyadh">00:00:00</span></div>
+        <div class="clock"><span class="city">Doha</span><span class="time" data-tz="Asia/Qatar">00:00:00</span></div>
+        <div class="clock"><span class="city">New York</span><span class="time" data-tz="America/New_York">00:00:00</span></div>
+        <div class="clock"><span class="city">Los Angeles</span><span class="time" data-tz="America/Los_Angeles">00:00:00</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROOF -->
+  <div class="proof">
+    <div class="badge reveal">
+      <div class="k serif">Top 3%</div>
+      <div class="lbl">Preferred Freelancer, Freelancer.com</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num" data-count="10" data-suffix="+">0</div>
+      <div class="lbl">Years in motion, editing, and design</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num"><span class="accent">3</span></div>
+      <div class="lbl">Regions served: Jordan, GCC, USA</div>
+    </div>
+    <div class="stat reveal">
+      <div class="num" data-count="100" data-suffix="%">0</div>
+      <div class="lbl">Founder-led, senior craft on every project</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="reveal">What we <span class="it">make</span> for ambitious brands</h2>
+        <p class="aside reveal">Four disciplines, one studio. We move from strategy to launch without losing the thread, so the story stays intact from first frame to final pixel.</p>
+      </div>
+      <div class="services">
+        <article class="glow-card reveal">
+          <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          <div><span class="idx">01 / WEB</span>
+            <h3>Web Experiences</h3>
+            <p>Cinematic, scroll-driven websites engineered in React, Next.js, and Three.js. Fast, accessible, and built to convert visitors into clients.</p>
+          </div>
+          <div class="tags"><span>WEB</span><span>3D</span><span>MOTION</span></div>
+        </article>
+        <article class="glow-card reveal">
+          <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          <div><span class="idx">02 / FILM</span>
+            <h3>Cinematic Video</h3>
+            <p>Brand films, launch films, and ad creative cut with over a decade of craft. Story-first edits that make people stop scrolling and start watching.</p>
+          </div>
+          <div class="tags"><span>FILM</span><span>EDIT</span><span>COLOR</span></div>
+        </article>
+        <article class="glow-card reveal">
+          <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          <div><span class="idx">03 / BRAND</span>
+            <h3>Brand and Identity</h3>
+            <p>Naming, logo systems, and complete visual languages. We build identities that feel inevitable, the kind ambitious companies grow into, not out of.</p>
+          </div>
+          <div class="tags"><span>STRATEGY</span><span>IDENTITY</span></div>
+        </article>
+        <article class="glow-card reveal">
+          <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+          <div><span class="idx">04 / AI</span>
+            <h3>AI and Visualization</h3>
+            <p>Photoreal 8K renders, generative concepts, and motion design. We turn rough ideas and sketches into assets clients cannot stop looking at.</p>
+          </div>
+          <div class="tags"><span>AI</span><span>3D</span><span>RENDER</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="sec" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="reveal">Selected <span class="it">work</span></h2>
+        <p class="aside reveal">A look at recent projects across SaaS, music, architecture, legal, and industry. Drag or scroll to move through the reel.</p>
+      </div>
+    </div>
+    <div class="work-track-pin" id="workPin">
+      <div class="work-track" id="workTrack">
+
+        <article class="work-card">
+          <div class="work-visual">
+            <div class="mesh" style="background:radial-gradient(circle at 30% 30%, #C9A24B, transparent 55%), radial-gradient(circle at 75% 65%, #5B2C46, transparent 60%), linear-gradient(135deg, #1A1320, #2C1E2E);"></div>
+            <div class="noise"></div>
+            <span class="yr">2026</span>
+            <h3 class="ttl">Far7etna</h3>
+          </div>
+          <div class="work-meta">
+            <div><div class="cat">SaaS / 3D / Product</div><p class="desc">Luxury platform for cinematic digital wedding invitations with 3D animation and a studio editor.</p></div>
+            <span class="reg">JO</span>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-visual">
+            <div class="mesh" style="background:radial-gradient(circle at 25% 35%, #E8556B, transparent 55%), radial-gradient(circle at 80% 70%, #2B2F6B, transparent 60%), linear-gradient(135deg, #140F1E, #241430);"></div>
+            <div class="noise"></div>
+            <span class="yr">2025</span>
+            <h3 class="ttl">Nashville Pop Records</h3>
+          </div>
+          <div class="work-meta">
+            <div><div class="cat">Branding / Web</div><p class="desc">Full rebrand, logo system, and web experience for recording artist Sammy Fields.</p></div>
+            <span class="reg">US</span>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-visual">
+            <div class="mesh" style="background:radial-gradient(circle at 70% 25%, #D8B98C, transparent 55%), radial-gradient(circle at 25% 80%, #3A4A52, transparent 60%), linear-gradient(135deg, #14161A, #20262B);"></div>
+            <div class="noise"></div>
+            <span class="yr">2025</span>
+            <h3 class="ttl">Walid Ksaifi Studio</h3>
+          </div>
+          <div class="work-meta">
+            <div><div class="cat">Render / 3D</div><p class="desc">Rough sketches transformed into photoreal 8K renders with a Modern Qatari Luxury aesthetic.</p></div>
+            <span class="reg">QA</span>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-visual">
+            <div class="mesh" style="background:radial-gradient(circle at 30% 70%, #4FB3A4, transparent 55%), radial-gradient(circle at 78% 28%, #1C3A4A, transparent 60%), linear-gradient(135deg, #0C1418, #14242C);"></div>
+            <div class="noise"></div>
+            <span class="yr">2025</span>
+            <h3 class="ttl">Qatari Legal Platform</h3>
+          </div>
+          <div class="work-meta">
+            <div><div class="cat">Web / UI</div><p class="desc">A Command-Line Luxe web platform with reactive particle backgrounds and a refined dark interface.</p></div>
+            <span class="reg">QA</span>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div class="work-visual">
+            <div class="mesh" style="background:radial-gradient(circle at 65% 35%, #C46B3A, transparent 55%), radial-gradient(circle at 28% 72%, #3C3F45, transparent 60%), linear-gradient(135deg, #131312, #26211C);"></div>
+            <div class="noise"></div>
+            <span class="yr">2024</span>
+            <h3 class="ttl">Safarin Steel</h3>
+          </div>
+          <div class="work-meta">
+            <div><div class="cat">Video / Ads</div><p class="desc">LinkedIn ad campaign and warehouse promo films for an industrial steel brand.</p></div>
+            <span class="reg">GCC</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section class="sec" id="method">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="reveal">The Keyframe <span class="it">Method</span></h2>
+        <p class="aside reveal">Every project runs on the same disciplined timeline. Clear milestones, no scope drift, senior hands from brief to launch.</p>
+      </div>
+      <div class="method-track">
+        <div class="method-line"><div class="fill" id="methodFill"></div></div>
+        <div class="steps">
+          <div class="step reveal"><span class="node"></span><span class="no">01</span><h4>Discover</h4><p>We listen, audit the landscape, and find the position only you can own.</p></div>
+          <div class="step reveal"><span class="node"></span><span class="no">02</span><h4>Define</h4><p>We lock the strategy, the story, and the visual system before a pixel moves.</p></div>
+          <div class="step reveal"><span class="node"></span><span class="no">03</span><h4>Direct</h4><p>We design, shoot, and build with cinematic craft and obsessive detail.</p></div>
+          <div class="step reveal"><span class="node"></span><span class="no">04</span><h4>Deliver</h4><p>We launch, measure, and scale, then stay close as the brand grows.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOICES -->
+  <section class="sec" id="voices">
+    <div class="wrap" style="position: relative; z-index: 10;">
+      <div class="sec-head">
+        <h2 class="reveal">Words from the <span class="it">studio</span></h2>
+        <p class="aside reveal">Founders, artists, and executives across three regions on what it felt like to work with Keyframe Global.</p>
+      </div>
+    </div>
+    <div class="voices-container">
+      <div class="voices-fade t"></div>
+      <div class="voices-fade b"></div>
+      <div class="voices-stage">
+        <div class="voices-inner" id="voicesInner"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <div class="eyebrow reveal" style="justify-content:center;display:flex;margin-bottom:28px;">00:00:59 / Next frame</div>
+      <h2 class="reveal">Let us define your <span class="it">pivotal</span> moment.</h2>
+      <p class="sub reveal">Tell us where the brand is headed. We will show you what the next frame looks like.</p>
+      <div class="row reveal">
+        <a href="mailto:hello@keyframeglobal.com" class="btn btn-primary magnetic"><span class="dot"></span>Book a discovery call</a>
+        <a href="mailto:hello@keyframeglobal.com" class="mail magnetic">hello@keyframeglobal.com</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /shell -->
+
+<!-- CINEMATIC CURTAIN FOOTER -->
+<div class="curtain">
+  <footer class="cine">
+    <div class="cine-aurora"></div>
+    <div class="cine-grid"></div>
+    <div class="cine-giant" id="cineGiant">KEYFRAME</div>
+
+    <div class="cine-marquee">
+      <div class="run">
+        <span>Strategy in Motion <i>&#10022;</i></span><span>Cinematic Web <i>&#10022;</i></span><span>Brand Film <i>&#10022;</i></span><span>Digital Branding <i>&#10022;</i></span><span>Amman . Dubai . Riyadh . Doha . New York <i>&#10022;</i></span>
+        <span>Strategy in Motion <i>&#10022;</i></span><span>Cinematic Web <i>&#10022;</i></span><span>Brand Film <i>&#10022;</i></span><span>Digital Branding <i>&#10022;</i></span><span>Amman . Dubai . Riyadh . Doha . New York <i>&#10022;</i></span>
+      </div>
+    </div>
+
+    <div class="cine-center">
+      <h2>Ready to <span class="it">begin?</span></h2>
+      <div class="pills">
+        <div class="pill-row">
+          <a href="mailto:hello@keyframeglobal.com" class="pill magnetic"><span class="dot" style="width:7px;height:7px;border-radius:50%;background:var(--accent);"></span>Start a project</a>
+          <a href="#work" class="pill magnetic">View the reel</a>
+        </div>
+        <div class="pill-row">
+          <a href="#services" class="pill sm magnetic">Services</a>
+          <a href="#method" class="pill sm magnetic">Method</a>
+          <a href="mailto:hello@keyframeglobal.com" class="pill sm magnetic">Contact</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cine-bottom">
+      <div class="cr">&copy; 2026 Keyframe Global. Strategy in Motion.</div>
+      <div class="cine-badge">Crafted with <span class="hb">&#10084;</span> by <b>Keyframe Global</b></div>
+      <button class="totop magnetic" id="toTop" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 10l7-7 7 7M12 3v18" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var isTouch = window.matchMedia("(hover: none)").matches || window.innerWidth < 900;
+
+  /* ---------- THEME (localStorage + prefers-color-scheme) ---------- */
+  var themeBtn = document.getElementById("themeBtn");
+  var savedTheme = localStorage.getItem("theme");
+  if (!savedTheme) {
+    savedTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  root.setAttribute("data-theme", savedTheme);
+
+  function readAccent() {
+    return getComputedStyle(root).getPropertyValue("--accent").trim() || "#EBB54E";
+  }
+  var fieldColor = readAccent();
+
+  themeBtn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    localStorage.setItem("theme", next);
+    fieldColor = readAccent();
+  });
+
+  /* ---------- MULTI CITY CLOCKS ---------- */
+  var clockEls = Array.prototype.slice.call(document.querySelectorAll(".clock .time"));
+  function tickClocks() {
+    clockEls.forEach(function (el) {
+      try {
+        el.textContent = new Intl.DateTimeFormat("en-GB", {
+          timeZone: el.getAttribute("data-tz"),
+          hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false
+        }).format(new Date());
+      } catch (e) { /* unsupported tz, leave default */ }
+    });
+  }
+  tickClocks();
+  setInterval(tickClocks, 1000);
+
+  /* ---------- NAV TIMECODE + SCROLLED STATE ---------- */
+  var nav = document.getElementById("nav");
+  var navtc = document.getElementById("navtc");
+  var start = Date.now();
+  function frame() {
+    var f = Math.floor(((Date.now() - start) / 1000) * 24) % 24;
+    var s = Math.floor((Date.now() - start) / 1000) % 60;
+    var m = Math.floor((Date.now() - start) / 60000) % 60;
+    navtc.textContent = "00:" + pad(m) + ":" + pad(s) + ":" + pad(f);
+    requestAnimationFrame(frame);
+  }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  requestAnimationFrame(frame);
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 40) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+  }, { passive: true });
+
+  /* ---------- TESTIMONIALS (build columns) ---------- */
+  var voices = [
+    { n: "Abdulraheem Ghazal", r: "CEO, Safarin Steel", f: "\uD83C\uDDF6\uD83C\uDDE6", c: "QA", q: "Our films and LinkedIn campaign finally look like the company we are. The leads followed.", col: "#EBB54E" },
+    { n: "Sammy Fields", r: "Recording Artist", f: "\uD83C\uDDFA\uD83C\uDDF8", c: "US", q: "Yousef rebuilt my entire identity. The brand finally looks like the music sounds.", col: "#E8556B" },
+    { n: "Walid Ksaifi", r: "Architect", f: "\uD83C\uDDF6\uD83C\uDDE6", c: "QA", q: "He turned rough sketches into 8K renders my clients could not stop looking at.", col: "#7CC4C0" },
+    { n: "Lina Haddad", r: "Founder, Far7etna", f: "\uD83C\uDDEF\uD83C\uDDF4", c: "JO", q: "The platform feels like a film. Couples tell us the invitation alone made them cry.", col: "#C9A24B" },
+    { n: "Omar Al Fahad", r: "Marketing Lead", f: "\uD83C\uDDE6\uD83C\uDDEA", c: "AE", q: "Briefed on Sunday, stunned by Thursday. The pace and the polish were both rare.", col: "#5B9BD5" },
+    { n: "Reem Al Saud", r: "Brand Director", f: "\uD83C\uDDF8\uD83C\uDDE6", c: "SA", q: "Senior craft on every single deliverable. No hand-offs to juniors, no drop in quality.", col: "#C08457" },
+    { n: "Daniel Brooks", r: "Startup Founder", f: "\uD83C\uDDFA\uD83C\uDDF8", c: "US", q: "The site loads instantly and still feels alive. Our demo bookings doubled in a month.", col: "#9B7EDE" },
+    { n: "Maya Tannous", r: "Creative Producer", f: "\uD83C\uDDEF\uD83C\uDDF4", c: "JO", q: "Clear timeline, zero scope drama, and a final cut that outclassed the brief.", col: "#4FB3A4" }
+  ];
+
+  function initials(name) {
+    var p = name.split(" ");
+    return (p[0][0] + (p[1] ? p[1][0] : "")).toUpperCase();
+  }
+  function cardHTML(v) {
+    return '<div class="vcard">' +
+      '<div class="top">' +
+        '<div class="av" style="background:' + v.col + '">' + initials(v.n) + '</div>' +
+        '<div><div class="nm">' + v.n + ' <span>' + v.f + '</span></div>' +
+        '<div class="rl">' + v.r + '</div></div>' +
+      '</div>' +
+      '<p class="q">' + v.q + '</p>' +
+    '</div>';
+  }
+  function buildColumn(items, down) {
+    var inner = items.map(cardHTML).join("");
+    var run = '<div class="vrun">' + inner + inner + '</div>';
+    return '<div class="vcol' + (down ? " down" : "") + '">' + run + '</div>';
+  }
+  var vi = document.getElementById("voicesInner");
+  var colA = [voices[0], voices[1], voices[2]];
+  var colB = [voices[3], voices[4], voices[5]];
+  var colC = [voices[6], voices[7], voices[0]];
+  vi.innerHTML = buildColumn(colA, false) + buildColumn(colB, true) + buildColumn(colC, false);
+  if (window.innerWidth < 760) {
+    vi.lastChild && vi.removeChild(vi.lastChild);
+  }
+
+  /* ---------- GLOW CARDS (pointer spotlight) ---------- */
+  var glowCards = document.querySelectorAll(".glow-card");
+  window.addEventListener("pointermove", function (e) {
+    for (var i = 0; i < glowCards.length; i++) {
+      var c = glowCards[i];
+      var r = c.getBoundingClientRect();
+      if (e.clientX > r.left - 60 && e.clientX < r.right + 60 && e.clientY > r.top - 60 && e.clientY < r.bottom + 60) {
+        c.style.setProperty("--mx", (e.clientX - r.left) + "px");
+        c.style.setProperty("--my", (e.clientY - r.top) + "px");
+      }
+    }
+  }, { passive: true });
+
+  /* ---------- CANVAS PARTICLE FIELD ---------- */
+  var canvas = document.getElementById("field");
+  var ctx = canvas.getContext("2d");
+  var pts = [], W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var mouse = { x: -9999, y: -9999 };
+  var isCanvasVisible = true;
+
+  var heroSection = document.getElementById("hero");
+  if (heroSection && "IntersectionObserver" in window) {
+    var canvasObserver = new IntersectionObserver(function(entries) {
+      isCanvasVisible = entries[0].isIntersecting;
+    });
+    canvasObserver.observe(heroSection);
+  }
+
+  function sizeField() {
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    canvas.style.width = W + "px"; canvas.style.height = H + "px";
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    var target = Math.min(110, Math.floor((W * H) / 17000));
+    pts = [];
+    for (var i = 0; i < target; i++) {
+      pts.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35 });
+    }
+  }
+  function hexToRgb(h) {
+    h = h.replace("#", "");
+    if (h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+    return [parseInt(h.substr(0,2),16), parseInt(h.substr(2,2),16), parseInt(h.substr(4,2),16)];
+  }
+  function drawField() {
+    requestAnimationFrame(drawField);
+    if (!isCanvasVisible) return;
+    ctx.clearRect(0, 0, W, H);
+    var rgb = hexToRgb(fieldColor.indexOf("#") === 0 ? fieldColor : "#EBB54E");
+    var base = "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ",";
+    for (var i = 0; i < pts.length; i++) {
+      var p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      var dxm = p.x - mouse.x, dym = p.y - mouse.y, dm = Math.sqrt(dxm*dxm + dym*dym);
+      if (dm < 130) { p.x += dxm / dm * 0.8; p.y += dym / dm * 0.8; }
+      ctx.beginPath(); ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+      ctx.fillStyle = base + "0.55)"; ctx.fill();
+      for (var j = i + 1; j < pts.length; j++) {
+        var q = pts[j], dx = p.x - q.x, dy = p.y - q.y, d = Math.sqrt(dx*dx + dy*dy);
+        if (d < 128) {
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = base + (0.16 * (1 - d / 128)) + ")"; ctx.lineWidth = 1; ctx.stroke();
+        }
+      }
+    }
+  }
+  if (!reduced) {
+    sizeField();
+    window.addEventListener("resize", sizeField);
+    window.addEventListener("pointermove", function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    requestAnimationFrame(drawField);
+  } else {
+    canvas.style.display = "none";
+  }
+
+  /* ---------- CUSTOM CURSOR ---------- */
+  if (!isTouch) {
+    var dot = document.querySelector(".cursor-dot");
+    var ring = document.querySelector(".cursor-ring");
+    var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    var dx = mx, dy = my, rx = mx, ry = my;
+
+    window.addEventListener("pointermove", function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+    
+    function renderCursor() {
+      dx += (mx - dx) * 0.2; dy += (my - dy) * 0.2;
+      rx += (mx - rx) * 0.1; ry += (my - ry) * 0.1;
+      dot.style.transform = "translate3d(calc(" + dx + "px - 50%), calc(" + dy + "px - 50%), 0)";
+      ring.style.transform = "translate3d(calc(" + rx + "px - 50%), calc(" + ry + "px - 50%), 0)";
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+
+    document.querySelectorAll("a, button, .glow-card, .work-card").forEach(function (el) {
+      el.addEventListener("pointerenter", function () { ring.classList.add("is-hover"); });
+      el.addEventListener("pointerleave", function () { ring.classList.remove("is-hover"); });
+    });
+  }
+
+  /* ---------- MAGNETIC BUTTONS ---------- */
+  if (!isTouch) {
+    document.querySelectorAll(".magnetic").forEach(function (el) {
+      var tx = 0, ty = 0, cx = 0, cy = 0, isHover = false;
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        tx = (e.clientX - r.left - r.width / 2) * 0.35;
+        ty = (e.clientY - r.top - r.height / 2) * 0.5;
+        isHover = true;
+      });
+      el.addEventListener("pointerleave", function () { tx = 0; ty = 0; isHover = false; });
+      function renderMag() {
+        if (isHover) { cx += (tx - cx) * 0.15; cy += (ty - cy) * 0.15; }
+        else { cx += (0 - cx) * 0.08; cy += (0 - cy) * 0.08; }
+        if (Math.abs(cx) > 0.1 || Math.abs(cy) > 0.1 || isHover) {
+          el.style.transform = "translate3d(" + cx + "px, " + cy + "px, 0)";
+        }
+        requestAnimationFrame(renderMag);
+      }
+      requestAnimationFrame(renderMag);
+    });
+  }
+
+  /* ---------- BACK TO TOP ---------- */
+  document.getElementById("toTop").addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---------- NATIVE SCROLL OBSERVERS ---------- */
+  if (!reduced && "IntersectionObserver" in window) {
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.style.opacity = 1;
+          e.target.style.transform = "translateY(0)";
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll(".reveal").forEach(function(el) {
+      el.style.opacity = 0;
+      el.style.transform = "translateY(40px)";
+      el.style.transition = "opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)";
+      revealObserver.observe(el);
+    });
+
+    var countObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          var el = e.target;
+          var end = parseFloat(el.getAttribute("data-count"));
+          var suf = el.getAttribute("data-suffix") || "";
+          var start = 0, dur = 1600, startT = performance.now();
+          function update(t) {
+            var p = Math.min((t - startT) / dur, 1);
+            var v = start + (end - start) * (1 - Math.pow(1 - p, 3));
+            el.textContent = Math.round(v) + suf;
+            if (p < 1) requestAnimationFrame(update);
+          }
+          requestAnimationFrame(update);
+          countObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll("[data-count]").forEach(function(el) { countObserver.observe(el); });
+
+    var stepObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) { e.target.classList.add("on"); } 
+        else { e.target.classList.remove("on"); }
+      });
+    }, { threshold: 0.5, rootMargin: "-10% 0px -40% 0px" });
+    document.querySelectorAll(".step").forEach(function(el) { stepObserver.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(el) { el.style.opacity = 1; el.style.transform = "none"; });
+  }
+})();
+</script>
+</body>
+</html>
