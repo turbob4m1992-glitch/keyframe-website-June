@@ -11,6 +11,7 @@
 <link rel="canonical" href="https://www.keyframeglobal.com/insights" />
 <link rel="icon" type="image/png" href="../keyframe-favicon.png" />
 <link rel="apple-touch-icon" href="../keyframe-favicon.png" />
+<link rel="prefetch" href="../" as="document" /><!-- warm the home page for instant navigation -->
 <meta name="color-scheme" content="dark light" />
 <meta name="theme-color" content="#08080A" media="(prefers-color-scheme: dark)" />
 <meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)" />
@@ -1005,14 +1006,14 @@ html.vt-active *, html.vt-active *::before, html.vt-active *::after { transition
   background: var(--bg);
   opacity: 0;
   pointer-events: none;
-  animation: kf-page-in 0.55s ease forwards;
+  animation: kf-page-in 0.28s ease forwards;
 }
 @keyframes kf-page-in { from { opacity: 1; } to { opacity: 0; } }
 html.kf-leaving #pageFade {
   animation: none;
   opacity: 1;
   pointer-events: auto;
-  transition: opacity 0.34s ease;
+  transition: opacity 0.14s ease;
 }
 @media (prefers-reduced-motion: reduce) {
   #pageFade, html.kf-leaving #pageFade { animation: none; opacity: 0; transition: none; }
@@ -1568,7 +1569,7 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
       e.preventDefault();
       root.classList.add("kf-leaving");
       if (reduced) { window.location.href = a.href; return; }
-      setTimeout(function () { window.location.href = a.href; }, 340);
+      setTimeout(function () { window.location.href = a.href; }, 150);
     });
   })();
 
