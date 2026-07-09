@@ -135,22 +135,8 @@
    Cinematic luxury, film-timeline motif, dual theme.
    =================================================================== */
 
-/* Smooth cross-fade between pages instead of a white navigation flash.
-   Supported browsers snapshot the old page and fade to the new one. */
-@view-transition { navigation: auto; }
-@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
-
-::view-transition,
-::view-transition-group(root),
-::view-transition-old(root),
-::view-transition-new(root) {
-  background-color: var(--bg);
-}
-
-::view-transition-old(root),
-::view-transition-new(root) {
-  mix-blend-mode: normal;
-}
+/* Page-to-page navigation uses the JS cross-fade overlay (#pageFade) further
+   down, which is smooth in every browser. See the VIEW TRANSITIONS block. */
 :root,
 [data-theme="dark"] {
   color-scheme: dark;
@@ -995,19 +981,42 @@ html { scrollbar-width: thin; scrollbar-color: color-mix(in oklch, var(--fg) 22%
    (class must not contain the word "lenis": Lenis strips those on state change) */
 html.kf-smooth { scroll-behavior: auto; }
 
-/* ---------- VIEW TRANSITIONS & PAGE LOAD ---------- */
-@view-transition { navigation: auto; }
+/* ---------- VIEW TRANSITIONS (theme-toggle wipe only) ---------- */
+/* The circular wipe on the theme toggle uses the same-document View Transition
+   API. Both snapshots simply hold full opacity while the JS clip-path reveals
+   the new theme, so there is no cross-fade flash and the colour follows the
+   current theme instead of a hard-coded dark. */
 ::view-transition-old(root),
 ::view-transition-new(root),
 ::view-transition-group(root) {
-  animation-duration: 0.8s;
-  background-color: #08080A !important;
+  animation-duration: 0.62s;
+  background-color: var(--bg);
 }
-::view-transition-old(root) { animation-name: fade-out; mix-blend-mode: normal; }
-::view-transition-new(root) { animation-name: fade-in; mix-blend-mode: normal; }
+::view-transition-old(root) { animation-name: kf-vt-hold; mix-blend-mode: normal; }
+::view-transition-new(root) { animation-name: kf-vt-hold; mix-blend-mode: normal; }
 html.vt-active::view-transition-old(root) { z-index: 1; }
 html.vt-active::view-transition-new(root) { z-index: 2; }
 html.vt-active *, html.vt-active *::before, html.vt-active *::after { transition: none !important; }
+@keyframes kf-vt-hold { from { opacity: 1; } to { opacity: 1; } }
+
+/* ---------- Cross-browser page cross-fade (no flash between pages) ---------- */
+#pageFade {
+  position: fixed; inset: 0; z-index: 250;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  animation: kf-page-in 0.55s ease forwards;
+}
+@keyframes kf-page-in { from { opacity: 1; } to { opacity: 0; } }
+html.kf-leaving #pageFade {
+  animation: none;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.34s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  #pageFade, html.kf-leaving #pageFade { animation: none; opacity: 0; transition: none; }
+}
 
 /* ---------- Work grid / reel morph (view transitions) ---------- */
 ::view-transition-group(*) {
@@ -1032,9 +1041,12 @@ html.vt-active *, html.vt-active *::before, html.vt-active *::after { transition
   .services .glow-card p { font-size: 1.05rem; max-width: 52ch; }
 }
 
-/* ---------- Nav: active section indicator ---------- */
-.nav-item.active { border-color: color-mix(in oklch, var(--accent) 55%, transparent); }
-.nav-item.active .nav-icon { color: var(--accent); }
+/* ---------- Nav: active item holds the expanded "hover" look ---------- */
+.nav-item.active { width: 130px; border-color: transparent; }
+.nav-item.active .nav-bg { opacity: 1; }
+.nav-item.active .nav-glow { opacity: 0.5; }
+.nav-item.active .nav-icon { transform: scale(0); transition-delay: 0s; color: #fff; }
+.nav-item.active .nav-title { transform: scale(1); transition-delay: 0.1s; }
 
 /* ---------- Reveal defaults ---------- */
 html.js .reveal { opacity: 0; }
@@ -1067,6 +1079,8 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
 </head>
 <body>
 
+<div id="pageFade" aria-hidden="true"></div>
+
 <div id="loader" aria-hidden="true">
   <div class="loader-inner">
     <div class="loader-mark">Keyframe <i>Global</i></div>
@@ -1084,42 +1098,42 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
 
 <!-- NAV -->
 <header class="nav" id="nav">
-  <a class="brand" href="../index.html#top" aria-label="Keyframe Global home">
+  <a class="brand" href="../#top" aria-label="Keyframe Global home">
     <img src="../logo-dark.png" alt="Keyframe Global" class="mark logo-dark" style="height: 28px; width: auto;" />
     <img src="../keyframe_logo_black.png?v=2" alt="Keyframe Global" class="mark logo-light" style="height: 28px; width: auto;" />
     <span class="tc" id="navtc">00:00:00:01</span>
   </a>
   <ul class="nav-links" aria-label="Primary">
     <li style="--gradient-from: #EBB54E; --gradient-to: #D98A2E;" class="nav-item">
-      <a href="../index.html#top">
+      <a href="../#top">
         <span class="nav-bg"></span><span class="nav-glow"></span>
         <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
         <span class="nav-title">Home</span>
       </a>
     </li>
-    <li style="--gradient-from: #EBB54E; --gradient-to: #7CC4C0;" class="nav-item">
-      <a href="../index.html#work">
-        <span class="nav-bg"></span><span class="nav-glow"></span>
-        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></span>
-        <span class="nav-title">Work</span>
-      </a>
-    </li>
     <li style="--gradient-from: #7CC4C0; --gradient-to: #4E9E99;" class="nav-item">
-      <a href="../index.html#services">
+      <a href="../#services">
         <span class="nav-bg"></span><span class="nav-glow"></span>
         <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
         <span class="nav-title">Services</span>
       </a>
     </li>
+    <li style="--gradient-from: #EBB54E; --gradient-to: #7CC4C0;" class="nav-item">
+      <a href="../#work">
+        <span class="nav-bg"></span><span class="nav-glow"></span>
+        <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg></span>
+        <span class="nav-title">Work</span>
+      </a>
+    </li>
     <li style="--gradient-from: #D98A2E; --gradient-to: #EBB54E;" class="nav-item">
-      <a href="../index.html#method">
+      <a href="../#method">
         <span class="nav-bg"></span><span class="nav-glow"></span>
         <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg></span>
         <span class="nav-title">Method</span>
       </a>
     </li>
     <li style="--gradient-from: #4E9E99; --gradient-to: #7CC4C0;" class="nav-item">
-      <a href="../index.html#voices">
+      <a href="../#voices">
         <span class="nav-bg"></span><span class="nav-glow"></span>
         <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span>
         <span class="nav-title">Studio</span>
@@ -1132,7 +1146,7 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
         <span class="nav-title">Contact</span>
       </a>
     </li>
-    <li style="--gradient-from: #E0654E; --gradient-to: #EBB54E;" class="nav-item">
+    <li style="--gradient-from: #E0654E; --gradient-to: #EBB54E;" class="nav-item active" aria-current="page">
       <a href="#">
         <span class="nav-bg"></span><span class="nav-glow"></span>
         <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
@@ -1154,12 +1168,13 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
 
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <nav aria-label="Mobile">
-    <a class="mm-link" href="../index.html#top" style="--i:0"><span class="no">01</span>Home</a>
-    <a class="mm-link" href="../index.html#work" style="--i:1"><span class="no">02</span>Work</a>
-    <a class="mm-link" href="../index.html#services" style="--i:2"><span class="no">03</span>Services</a>
-    <a class="mm-link" href="../index.html#method" style="--i:3"><span class="no">04</span>Method</a>
-    <a class="mm-link" href="../index.html#voices" style="--i:4"><span class="no">05</span>Studio</a>
+    <a class="mm-link" href="../#top" style="--i:0"><span class="no">01</span>Home</a>
+    <a class="mm-link" href="../#services" style="--i:1"><span class="no">02</span>Services</a>
+    <a class="mm-link" href="../#work" style="--i:2"><span class="no">03</span>Work</a>
+    <a class="mm-link" href="../#method" style="--i:3"><span class="no">04</span>Method</a>
+    <a class="mm-link" href="../#voices" style="--i:4"><span class="no">05</span>Studio</a>
     <a class="mm-link" href="#contact" style="--i:5"><span class="no">06</span>Contact</a>
+    <a class="mm-link" href="#" style="--i:6"><span class="no">07</span>Insights</a>
   </nav>
   <div class="mm-foot">
     <a href="mailto:yousef@keyframeglobal.com">yousef@keyframeglobal.com</a>
@@ -1374,11 +1389,11 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
       <div class="pills">
         <div class="pill-row">
           <a href="mailto:yousef@keyframeglobal.com" class="pill magnetic"><span class="dot" style="width:7px;height:7px;border-radius:50%;background:var(--accent);"></span>Start a project</a>
-          <a href="../index.html#work" class="pill magnetic">View the reel</a>
+          <a href="../#work" class="pill magnetic">View the reel</a>
         </div>
         <div class="pill-row">
-          <a href="../index.html#services" class="pill sm magnetic">Services</a>
-          <a href="../index.html#method" class="pill sm magnetic">Method</a>
+          <a href="../#services" class="pill sm magnetic">Services</a>
+          <a href="../#method" class="pill sm magnetic">Method</a>
           <a href="mailto:yousef@keyframeglobal.com" class="pill sm magnetic">Contact</a>
         </div>
       </div>
@@ -1527,6 +1542,35 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
       applyTheme(next);
     }
   });
+
+  /* ---------- CROSS-BROWSER PAGE FADE (no flash between pages) ---------- */
+  (function () {
+    /* Restore a clean state when returning via the back/forward cache. */
+    window.addEventListener("pageshow", function () { root.classList.remove("kf-leaving"); });
+
+    var leaving = false;
+    document.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest ? e.target.closest("a") : null;
+      if (!a) return;
+      var href = a.getAttribute("href");
+      if (!href) return;
+      if (a.target && a.target !== "_self") return;                 /* new tab / window */
+      if (a.hasAttribute("download")) return;
+      if (href.charAt(0) === "#") return;                            /* same-page anchor */
+      if (/^(mailto:|tel:|sms:|javascript:)/i.test(href)) return;
+      var url;
+      try { url = new URL(a.href, window.location.href); } catch (err) { return; }
+      if (url.origin !== window.location.origin) return;             /* external site */
+      if (url.pathname === window.location.pathname) return;         /* same document */
+      if (leaving) return;
+      leaving = true;
+      e.preventDefault();
+      root.classList.add("kf-leaving");
+      if (reduced) { window.location.href = a.href; return; }
+      setTimeout(function () { window.location.href = a.href; }, 340);
+    });
+  })();
 
   /* ---------- MULTI CITY CLOCKS ---------- */
   var clockEls = Array.prototype.slice.call(document.querySelectorAll(".clock .time"));
@@ -2112,24 +2156,13 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
     });
   }
 
-  /* ---------- NAV: ACTIVE SECTION INDICATOR ---------- */
-  if ("IntersectionObserver" in window) {
-    var navAnchors = {};
-    document.querySelectorAll(".nav-item a").forEach(function (a) {
-      navAnchors[a.getAttribute("href")] = a.parentElement;
-    });
-    var sectionObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        var id = "#" + (en.target.id === "hero" ? "top" : en.target.id);
-        for (var k in navAnchors) navAnchors[k].classList.toggle("active", k === id);
-      });
-    }, { rootMargin: "-45% 0px -45% 0px" });
-    ["hero", "work", "services", "method", "voices", "contact"].forEach(function (id) {
-      var el = document.getElementById(id);
-      if (el) sectionObs.observe(el);
-    });
-  }
+  /* ---------- NAV: current page indicator ---------- */
+  /* This is the Insights page, so the Insights nav item stays highlighted the
+     whole time. The home-section scroll spy lives on the home page only. */
+  (function () {
+    var insightsItem = document.querySelector('.nav-links .nav-item a[href="#"]');
+    if (insightsItem) insightsItem.parentElement.classList.add("active");
+  })();
 
   /* ---------- CONSOLE SIGNATURE ---------- */
   try {
