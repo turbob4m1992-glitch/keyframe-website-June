@@ -75,13 +75,16 @@
 @view-transition { navigation: auto; }
 @media (prefers-reduced-motion: reduce) { @view-transition { navigation: none; } }
 
+::view-transition,
+::view-transition-group(root),
+::view-transition-old(root),
+::view-transition-new(root) {
+  background-color: var(--bg);
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   mix-blend-mode: normal;
-}
-
-::view-transition-group(root) {
-  background-color: var(--bg);
 }
 :root,
 [data-theme="dark"] {
@@ -138,7 +141,7 @@ html { scroll-behavior: smooth; background: var(--bg); }
 html.lenis-stop { scroll-behavior: auto; }
 
 body {
-  background: var(--bg);
+  background: transparent;
   color: var(--fg);
   font-family: "Bricolage Grotesque", sans-serif;
   font-optical-sizing: auto;
@@ -503,6 +506,7 @@ header.nav.scrolled {
 .work-card {
   position: relative; flex: 0 0 auto; width: 70vw; max-width: 620px; border-radius: 22px; overflow: hidden;
   border: 1px solid var(--line); scroll-snap-align: center;
+  display: flex; flex-direction: column;
 }
 @media (max-width: 600px) { .work-card { width: 85vw; } }
 .work-visual { height: 62vh; max-height: 540px; position: relative; overflow: hidden; background: var(--surface-2); }
@@ -522,7 +526,7 @@ header.nav.scrolled {
   font-family: "Fraunces", serif; font-style: italic; font-weight: 420; letter-spacing: -0.02em;
   font-size: clamp(1.8rem, 4vw, 3rem); color: #fff; mix-blend-mode: difference;
 }
-.work-meta { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; background: var(--surface); }
+.work-meta { display: flex; flex-grow: 1; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 26px; background: var(--surface); }
 .work-meta .cat { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; letter-spacing: 0.16em; color: var(--accent); text-transform: uppercase; }
 .work-meta .desc { color: var(--fg-muted); font-size: 0.9rem; max-width: 38ch; }
 .work-meta .reg { font-family: "IBM Plex Mono", monospace; font-size: 0.66rem; color: var(--fg-faint); letter-spacing: 0.1em; }
@@ -927,8 +931,16 @@ html { scrollbar-width: thin; scrollbar-color: color-mix(in oklch, var(--fg) 22%
    (class must not contain the word "lenis": Lenis strips those on state change) */
 html.kf-smooth { scroll-behavior: auto; }
 
-/* ---------- Theme switch view transition (scoped so page navigations keep the default cross-fade) ---------- */
-html.vt-active::view-transition-old(root), html.vt-active::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+/* ---------- VIEW TRANSITIONS & PAGE LOAD ---------- */
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root),
+::view-transition-group(root) {
+  animation-duration: 0.8s;
+  background-color: #08080A !important;
+}
+::view-transition-old(root) { animation-name: fade-out; mix-blend-mode: normal; }
+::view-transition-new(root) { animation-name: fade-in; mix-blend-mode: normal; }
 html.vt-active::view-transition-old(root) { z-index: 1; }
 html.vt-active::view-transition-new(root) { z-index: 2; }
 html.vt-active *, html.vt-active *::before, html.vt-active *::after { transition: none !important; }
@@ -1057,7 +1069,7 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
       </a>
     </li>
     <li style="--gradient-from: #E0654E; --gradient-to: #EBB54E;" class="nav-item">
-      <a href="/insights/">
+      <a href="insights/index.html">
         <span class="nav-bg"></span><span class="nav-glow"></span>
         <span class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></span>
         <span class="nav-title">Insights</span>
@@ -1169,7 +1181,7 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
         <p class="aside reveal">Four disciplines, one studio. We move from strategy to launch without losing the thread, so the story stays intact from first frame to final pixel.</p>
       </div>
       <div class="services">
-        <article class="glow-card">
+        <article class="glow-card reveal">
           <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
           <div><span class="idx">01 / WEB</span>
             <h3>Web Experiences</h3>
@@ -1177,7 +1189,7 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
           </div>
           <div class="tags"><span>WEB</span><span>3D</span><span>MOTION</span></div>
         </article>
-        <article class="glow-card">
+        <article class="glow-card reveal">
           <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
           <div><span class="idx">02 / FILM</span>
             <h3>Cinematic Video</h3>
@@ -1185,7 +1197,7 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
           </div>
           <div class="tags"><span>FILM</span><span>EDIT</span><span>COLOR</span></div>
         </article>
-        <article class="glow-card">
+        <article class="glow-card reveal">
           <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
           <div><span class="idx">03 / BRAND</span>
             <h3>Brand and Identity</h3>
@@ -1193,7 +1205,7 @@ html.no-gsap .reveal, html.no-gsap .split-h, html.no-gsap .reveal-text { opacity
           </div>
           <div class="tags"><span>STRATEGY</span><span>IDENTITY</span></div>
         </article>
-        <article class="glow-card">
+        <article class="glow-card reveal">
           <svg class="arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
           <div><span class="idx">04 / AI</span>
             <h3>AI and Visualization</h3>
